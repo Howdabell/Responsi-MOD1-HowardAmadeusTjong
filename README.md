@@ -28,7 +28,7 @@ Data disimpan dalam tabel `items` di database Supabase. Penggunaan `BIGINT` seba
 | :--- | :--- | :--- |
 | `id` | `BIGINT` (Primary Key) | ID unik numerik yang digenerasi otomatis oleh Supabase (`IDENTITY`). |
 | `created_at` | `timestamptz` | Waktu dan tanggal kapan data pertama kali dibuat. |
-| `nama` | `text` | Nama atau deskripsi singkat sepatu (misal: "Nike Air Force 1"). |
+| `nama` | `text` | Nama atau deskripsi singkat sepatu (misal: "Skechers"). |
 | `status` | `text` | Status progres pencucian (contoh: `Sedang Dicuci`, `Selesai`). |
 | `tanggalMasuk` | `date` | Tanggal saat sepatu diterima oleh layanan cuci. |
 | `tanggalSelesai` | `date` | Tanggal saat proses pencucian selesai (bisa `NULL`). |
@@ -43,7 +43,7 @@ Menambahkan data cucian sepatu baru.
 - **Request Body:**
   ```json
   {
-    "nama": "Adidas Samba",
+    "nama": "Skechers",
     "status": "Sedang Dicuci",
     "tanggalMasuk": "2025-10-24"
   }
@@ -54,7 +54,7 @@ Menambahkan data cucian sepatu baru.
   "data": {
     "id": 1,
     "created_at": "2025-10-24T10:30:00Z",
-    "nama": "Adidas Samba",
+    "nama": "Skechers",
     "status": "Sedang Dicuci",
     "tanggalMasuk": "2025-10-24",
     "tanggalSelesai": null
@@ -72,7 +72,7 @@ Mengambil seluruh daftar data cucian.
     {
     "id": 1,
     "created_at": "2025-10-24T10:30:00Z",
-    "nama": "Adidas Samba",
+    "nama": "Skechers",
     "status": "Sedang Dicuci",
     "tanggalMasuk": "2025-10-24",
     "tanggalSelesai": null
@@ -105,13 +105,14 @@ Mengubah status item dengan `id` 1 menjadi 'Selesai'.
   "status": "Selesai",
   "tanggalSelesai": "2025-10-25"
   }
+  
 - **Response Sukses (200 OK):**
   ```json
   {
   "message": "Status sepatu berhasil diperbarui.",
   "data": {
     "id": 1,
-    "nama": "Adidas Samba",
+    "nama": "Skechers",
     "status": "Selesai",
     "tanggalMasuk": "2025-10-24",
     "tanggalSelesai": "2025-10-25"
@@ -146,6 +147,7 @@ Sebelum menjalankan API, Anda harus menyiapkan database di Supabase.
    "tanggalMasuk" DATE NOT NULL,
    "tanggalSelesai" DATE
    );
+   
    ALTER TABLE items ENABLE ROW LEVEL SECURITY;
    CREATE POLICY "Allow public CRUD"
    ON items
@@ -158,20 +160,24 @@ Sebelum menjalankan API, Anda harus menyiapkan database di Supabase.
 
 1. Clone Repository: Buka terminal Anda dan jalankan:
    ```Bash
-   git clone [https://github.com/URL_REPO_ANDA/NAMA_REPO.git](https://github.com/URL_REPO_ANDA/NAMA_REPO.git)
-   cd NAMA_REPO
+   git clone [https://github.com/Howdabell/Responsi-MOD1-HowardAmadeusTjong]
+   cd Responsi-MOD1-HowardAmadeusTjong
+   
 2. Install Dependencies: Instal semua package yang dibutuhkan:
    ```Bash
    npm install
 
 3. Konfigurasi Environment Variables: Buat file `.env` di direktori utama. Salin format di bawah dan isi dengan kredensial Supabase Anda (dari `Project Settings > API`).
    ```
-   SUPABASE_URL=URL_PROYEK_SUPABASE_ANDA
-   SUPABASE_KEY=KUNCI_ANON_PUBLIC_ANDA
+   SUPABASE_URL="https://lyowznbnrpkydcinqxhq.supabase.co"
+   SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5b3d6bmJucnBreWRjaW5xeGhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyMTY2NjIsImV4cCI6MjA3Njc5MjY2Mn0.i9pFCGq_kyc6NHF1v3F83XiTxOgY3ELwh6RiI6bCGHk"
+   
 4. Jalankan Server Lokal:
    ```Bash
    npm run dev
+   
 5. API akan berjalan di `http://localhost:3000`.
 
 ## Link Deploy (Vercel)
 https://vercel.com/howards-projects-bfcc7b95/responsi-mod-1-howard-amadeus-tjong/Dh2v472L6CP1dVexYT29zxMZu3Kv
+
